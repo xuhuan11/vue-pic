@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="container">
     <h1>{{ msg }}</h1>
     <p>
       欢迎加入qq群（qq群号:337087493）进行学习交流探讨
@@ -11,8 +11,8 @@
     <!--<button @click="question()">生成</button>-->
     <button @click="generate">生成图片</button>
     <p v-if="!answer">Loading...</p>
-    <img v-if="!answer" :src="require('@/assets/loading.gif')" alt="loading GIF">
-    <img  :src="image">
+    <img v-if="!answer"  class="loading" :src="require('@/assets/loading.gif')" alt="loading GIF">
+    <img  class="image" :src="image">
   </div>
 </template>
 
@@ -63,6 +63,7 @@ export default {
     generate(){  
         window.console.log(this.prompt)
         this.getPicture()
+        this.answer = 0
     }
   },
   mounted() {
@@ -77,5 +78,15 @@ input {
   border-radius: 4px; /* 设置圆角半径 */
   padding: 4px; /* 设置内边距 */
   border: 2px solid gray; /* 边框设置 */
+}
+.container {
+  position: relative; /* 设置容器为相对定位 */
+}
+
+
+.image {
+  display: block; /* 将 image 设置为块级元素 */
+  margin: 0 auto; /* 居中对齐 */
+  z-index: 0; /* 将 image 设置在底部 */
 }
 </style>
