@@ -63,7 +63,6 @@ export default {
     generate(){  
         window.console.log(this.prompt)
         this.getPicture()
-        this.answer = 0
     }
   },
   mounted() {
